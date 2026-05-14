@@ -1,5 +1,6 @@
-# notification-system-patterns
-Yazılım Tasarım Örüntüleri Bireysel Ödevi - Bildirim Sistemi
+# Bildirim Sistemi - Tasarım Örüntüleri Ödevi
 
 **Seçilen Konu:** A - Bildirim Sistemi
-**Gerekçe:** Modern uygulamalarda bildirim yönetiminin karmaşıklaşması çok olasıdır. Geleneksel if-else zincirleriyle kurulan bir yapının, yeni bildirim türleri eklendikçe nasıl yönetilemez hale geldiğini ve tasarım örüntüleriyle bu kaosu nasıl çözeceğimi görmek için bu konuyu seçtim.
+
+**Neden bu konuyu seçtim?**
+Çünkü projelerde en çabuk spagettiye dönen yerler genelde bu bildirim kısımları oluyor. Başlangıçta sadece mail atarız diye yola çıkıp, sonra SMS, ardından Push eklenince `if-else` blokları uzayıp gidiyor. Bu karmaşanın ileride başıma iş açmasını istemediğim için, baştan pattern'larla bu işi nasıl temiz çözerim onu görmek istedim.
