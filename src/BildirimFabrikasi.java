@@ -1,12 +1,19 @@
 public class BildirimFabrikasi {
     public Bildirim bildirimOlustur(String tip) {
+        Bildirim temelBildirim;
+        
         if (tip.equalsIgnoreCase("EPOSTA")) {
-            return new EpostaBildirimi();
+            temelBildirim = new EpostaBildirimi();
         } else if (tip.equalsIgnoreCase("SMS")) {
-            return new SmsBildirimi();
+            temelBildirim = new SmsBildirimi();
         } else if (tip.equalsIgnoreCase("PUSH")) {
-            return new PushBildirimi();
+            temelBildirim = new PushBildirimi();
+        } else if (tip.equalsIgnoreCase("WHATSAPP")) {
+            temelBildirim = new WhatsAppAdaptoru();
+        } else {
+            throw new IllegalArgumentException("Bilinmeyen bildirim tipi: " + tip);
         }
-        throw new IllegalArgumentException("Bilinmeyen bildirim tipi: " + tip);
+        
+        return new LogluBildirim(temelBildirim);
     }
 }
