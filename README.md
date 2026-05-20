@@ -1,6 +1,10 @@
-# Bildirim Sistemi - Tasarım Örüntüleri Ödevi
+# Bildirim Sistemi - Tasarım Örüntüleri Projesi
 
-**Seçilen Konu:** A - Bildirim Sistemi
+Bu proje, bir bildirim yönetim sisteminin SOLID prensipleri ve GoF Tasarım Örüntüleri kullanılarak nasıl refactor edilebileceğini ve genişletilebileceğini göstermektedir.
 
-**Neden bu konuyu seçtim?**
-Çünkü projelerde en çabuk spagettiye dönen yerler genelde bu bildirim kısımları oluyor. Başlangıçta sadece mail atarız diye yola çıkıp, sonra SMS, ardından Push eklenince `if-else` blokları uzayıp gidiyor. Bu karmaşanın ileride başıma iş açmasını istemediğim için, baştan pattern'larla bu işi nasıl temiz çözerim onu görmek istedim.
+## Uygulanan Mimariler
+* **Creational:** Factory Method (Bildirim nesnelerinin merkezi üretimi)
+* **Structural:** Adapter (WhatsApp 3. parti entegrasyonu), Decorator (Dinamik loglama özelliği)
+* **Behavioral:** Observer (Abonelik ve toplu yayın sistemi), Strategy (Dinamik mesaj formatlama)
+
+Tüm örüntü detayları, UML diyagramları ve neden tercih edildikleri `PATTERNS.md` dosyasında belgelenmiştir. Geliştirme süreci AI Pair Programming ile yürütülmüş olup, tartışma günlükleri `docs/ai-log/` dizininde bulunmaktadır.
