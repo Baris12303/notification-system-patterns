@@ -88,3 +88,53 @@ classDiagram
   BildirimDekoratoru <|-- LogluBildirim
   WhatsAppAdaptoru --> WhatsAppServisi
 ```
+
+## Faz 3: Behavioral Pattern
+
+**Kullanılan Örüntü:** Observer (Gözlemci)
+* **Nerede Kullanıldı?** `src/KullaniciObserver.java`, `src/StandartKullanici.java` ve `src/BildirimYayincisi.java` sınıflarında.
+* **Neden Seçildi?** Sisteme dinamik olarak yeni aboneler ekleyebilmek, istendiğinde abonelikten çıkarabilmek ve sisteme bağımlı kalmadan tüm kullanıcılara tek bir merkezden yayın (broadcast) yapabilmek için en ideal örüntü Observer'dı.
+
+### Final UML Sınıf Diyagramı (Tüm Proje)
+
+```mermaid
+classDiagram
+  class Bildirim {
+      <<interface>>
+      +gonder(mesaj: String, hedef: String)
+  }
+  class EpostaBildirimi {
+      +gonder(mesaj: String, hedef: String)
+  }
+  class WhatsAppAdaptoru {
+      -wpServisi: WhatsAppServisi
+      +gonder(mesaj: String, hedef: String)
+  }
+  class BildirimDekoratoru {
+      <<abstract>>
+      #sarilanBildirim: Bildirim
+  }
+  class LogluBildirim {
+      +gonder(mesaj: String, hedef: String)
+  }
+  class KullaniciObserver {
+      <<interface>>
+      +bildirimAl(mesaj: String)
+  }
+  class StandartKullanici {
+      -isim: String
+      +bildirimAl(mesaj: String)
+  }
+  class BildirimYayincisi {
+      -aboneler: List
+      +aboneEkle(abone: KullaniciObserver)
+      +aboneCikar(abone: KullaniciObserver)
+      +topluBildirimGonder(mesaj: String)
+  }
+
+  Bildirim <|.. EpostaBildirimi
+  Bildirim <|.. WhatsAppAdaptoru
+  Bildirim <|.. BildirimDekoratoru
+  BildirimDekoratoru <|-- LogluBildirim
+  KullaniciObserver <|.. StandartKullanici
+  BildirimYayincisi o-- KullaniciObserver
