@@ -94,6 +94,9 @@ classDiagram
 **Kullanılan Örüntü:** Observer (Gözlemci)
 * **Nerede Kullanıldı?** `src/KullaniciObserver.java`, `src/StandartKullanici.java` ve `src/BildirimYayincisi.java` sınıflarında.
 * **Neden Seçildi?** Sisteme dinamik olarak yeni aboneler ekleyebilmek, istendiğinde abonelikten çıkarabilmek ve sisteme bağımlı kalmadan tüm kullanıcılara tek bir merkezden yayın (broadcast) yapabilmek için en ideal örüntü Observer'dı.
+* **2. Kullanılan Örüntü:** Strategy (Strateji)
+* **Nerede Kullanıldı?** `src/MesajStratejisi.java` ve bunu uygulayan somut sınıflar ile `BildirimYayincisi.java` içerisinde.
+* **Neden Seçildi?** Abonelere gönderilen mesajların (Standart veya Acil) formatlanma şeklinin çalışma zamanında değiştirilebilmesi için seçildi. İleride "Kampanyalı Mesaj Formatı" eklemek istersek mevcut koda dokunmadan sadece yeni bir strateji sınıfı eklememiz yeterli olacak.
 
 ### Final UML Sınıf Diyagramı (Tüm Proje)
 
@@ -127,9 +130,21 @@ classDiagram
   }
   class BildirimYayincisi {
       -aboneler: List
+      -strateji: MesajStratejisi
       +aboneEkle(abone: KullaniciObserver)
       +aboneCikar(abone: KullaniciObserver)
+      +setStrateji(strateji: MesajStratejisi)
       +topluBildirimGonder(mesaj: String)
+  }
+  class MesajStratejisi {
+      <<interface>>
+      +formatla(mesaj: String) String
+  }
+  class StandartMesajStratejisi {
+      +formatla(mesaj: String) String
+  }
+  class AcilMesajStratejisi {
+      +formatla(mesaj: String) String
   }
 
   Bildirim <|.. EpostaBildirimi
@@ -138,3 +153,6 @@ classDiagram
   BildirimDekoratoru <|-- LogluBildirim
   KullaniciObserver <|.. StandartKullanici
   BildirimYayincisi o-- KullaniciObserver
+  BildirimYayincisi --> MesajStratejisi
+  MesajStratejisi <|.. StandartMesajStratejisi
+  MesajStratejisi <|.. AcilMesajStratejisi
