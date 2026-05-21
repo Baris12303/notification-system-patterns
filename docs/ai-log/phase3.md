@@ -27,5 +27,5 @@ AI Strategy pattern'i önerdi. Mesaj formatlama davranışını `MesajStratejisi
 **"AI olmadan bu faz ne kadar sürerdi?"**
 Observer ve Strategy'yi kavramsal olarak bilsem de doğru bağlamda nasıl birleştireceğimi bulmak muhtemelen 2-3 saat daha alırdı. AI sayesinde bu süreyi yaklaşık yarıya indirdim; asıl zamanımı kodun Türkçeleştirilmesine ve kendi mantığıma oturtulmasına harcadım.
 
-**"AI sizi nerede yanılttı?"**
+**"AI beni nerede yanılttı?"**
 AI ilk başta Observer ve Strategy'yi iki ayrı sınıf hiyerarşisinde, birbirinden kopuk tutmamı önerdi. Yani `BildirimYayincisi` sadece Observer işi yapsın, Strategy'yi başka bir sınıf yönetsin dedi. Ama ben ikisini aynı yayıncı üzerinden konuşturmak istiyordum — abonelere göndermeden önce mesaj formatlanmalıydı. AI'ın önerisine uymadım; stratejiyi doğrudan `BildirimYayincisi`'na gömdüm. Bu kararın daha sade ve okunabilir olduğunu düşünüyorum.
