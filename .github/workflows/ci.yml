@@ -1,0 +1,35 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ main, phase-1, phase-2, phase-3 ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodu indir
+        uses: actions/checkout@v4
+
+      - name: Java 17 kur
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Projeyi derle
+        run: |
+          mkdir -p out
+          javac -d out -sourcepath src \
+            src/bildirim/*.java \
+            src/adaptor/*.java \
+            src/dekorator/*.java \
+            src/observer/*.java \
+            src/strateji/*.java \
+            src/Main.java
+
+      - name: Uygulamayi calistir
+        run: java -cp out Main
