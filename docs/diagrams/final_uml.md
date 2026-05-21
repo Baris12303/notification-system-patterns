@@ -58,3 +58,4 @@ classDiagram
   BildirimYayincisi --> MesajStratejisi
   MesajStratejisi <|.. StandartMesajStratejisi
   MesajStratejisi <|.. AcilMesajStratejisi
+```
