@@ -1,3 +1,7 @@
+package adaptor;
+
+import bildirim.Bildirim;
+
 public class WhatsAppAdaptoru implements Bildirim {
     private WhatsAppServisi wpServisi;
 

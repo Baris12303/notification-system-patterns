@@ -1,3 +1,5 @@
+package observer;
+
 public class StandartKullanici implements KullaniciObserver {
     private String isim;
 

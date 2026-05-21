@@ -1,3 +1,5 @@
+package strateji;
+
 public class StandartMesajStratejisi implements MesajStratejisi {
     @Override
     public String formatla(String mesaj) {

@@ -1,3 +1,5 @@
+package adaptor;
+
 public class WhatsAppServisi {
     public void sendMessage(String phone, String text) {
         System.out.println("WhatsApp API'ye bağlanılıyor...");
