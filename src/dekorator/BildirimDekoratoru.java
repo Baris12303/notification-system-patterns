@@ -1,3 +1,7 @@
+package dekorator;
+
+import bildirim.Bildirim;
+
 public abstract class BildirimDekoratoru implements Bildirim {
     protected Bildirim sarilanBildirim;
 
