@@ -1,3 +1,8 @@
+package bildirim;
+
+import adaptor.WhatsAppAdaptoru;
+import dekorator.LogluBildirim;
+
 public class BildirimFabrikasi {
     public Bildirim bildirimOlustur(String tip) {
         Bildirim temelBildirim;
