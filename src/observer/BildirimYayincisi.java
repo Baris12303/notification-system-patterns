@@ -1,5 +1,9 @@
+package observer;
+
 import java.util.ArrayList;
 import java.util.List;
+import strateji.MesajStratejisi;
+import strateji.StandartMesajStratejisi;
 
 public class BildirimYayincisi {
     private List<KullaniciObserver> aboneler = new ArrayList<>();
@@ -23,7 +27,6 @@ public class BildirimYayincisi {
 
     public void topluBildirimGonder(String mesaj) {
         String formatlanmisMesaj = strateji.formatla(mesaj);
-        
         System.out.println("\n[SİSTEM] Tüm abonelere toplu bildirim gönderiliyor...");
         for (KullaniciObserver abone : aboneler) {
             abone.bildirimAl(formatlanmisMesaj);
